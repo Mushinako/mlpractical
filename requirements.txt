@@ -1,0 +1,11 @@
+black
+flake8
+pip
+wheel
+
+ipykernel
+ipywidgets
+jupyter
+matplotlib
+numpy
+tqdm
