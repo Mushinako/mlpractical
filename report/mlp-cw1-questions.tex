@@ -45,17 +45,17 @@
 
 %% Question 5:
 \newcommand{\questionFive} {
-    \youranswer{Question 5 - Explain what overfitting is in detail and in your own words}
+    \youranswer{it contains more parameters than what the data should require. In this scenario, the model is more complicated than what should be necessary for the given data, resulting in the model's sensitivity to the irrelevant details and failure to project the general trend}
 }
 
 %% Question 6:
 \newcommand{\questionSix} {
-    \youranswer{Question 6 - Discuss ``why'' and ``how'' overfitting occurs, and ``how'' one can identify it is happening}
+    \youranswer{Overfitting occurs when the same model is trained to exclusively maximizing performance on the training data repeatedly, causing the model to essentially "remembering" the training data and unable to identify generalizations within. This can usually be identified by a high accuracy and low errors on training data and low accuracy and high errors on unseen data}
 }
 
 %% Question 7:
 \newcommand{\questionSeven} {
-    \youranswer{Question 7 - Explain what these figures contain and how the curves evolve, and spot where overfitting occurs. Reason based on the min/max points and velocities (direction and magnitude of change) of the accuracy and error curves}
+    \youranswer{after around epoch 16, model's ability to predict training data continues to improve while accuracy for unseen data gradually decreases. Figure 1b tells the same story from a different perspective—the error for training data decreases gradually throughout the process, but the error for unseen data rises drastically. These two graphs show that after around epoch 16, the model become too accustomed to the training data, losing the ability to identify common attributes within that would help it process new data}
 }
 
 %% Question 8:
