@@ -68,4 +68,15 @@ target/
 notebooks/.ipynb_checkpoints/
 
 .vscode/
+
+# Dependencies
 venv/
+
+# Latex
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
