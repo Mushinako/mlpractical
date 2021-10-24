@@ -130,7 +130,7 @@ class Optimiser(object):
             "Epoch {0}: {1:.1f}s to complete\n    {2}".format(
                 epoch,
                 epoch_time,
-                ", ".join(["{}={:.2e}".format(k, v) for (k, v) in stats.items()]),
+                ", ".join("{}={:.2e}".format(k, v) for (k, v) in stats.items()),
             )
         )
 
@@ -153,12 +153,12 @@ class Optimiser(object):
         with self.tqdm_progress(total=num_epochs) as progress_bar:
             progress_bar.set_description("Exp Prog")
             for epoch in range(1, num_epochs + 1):
-                start_time = time.time()
+                # start_time = time.time()
                 self.do_training_epoch()
-                epoch_time = time.time() - start_time
+                # epoch_time = time.time() - start_time
                 if epoch % stats_interval == 0:
                     stats = self.get_epoch_stats()
-                    self.log_stats(epoch, epoch_time, stats)
+                    # self.log_stats(epoch, epoch_time, stats)
                     run_stats.append(list(stats.values()))
                 progress_bar.update(1)
         finish_train_time = time.time()

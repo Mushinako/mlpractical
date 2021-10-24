@@ -25,6 +25,7 @@
 
 %% Question 1:
 \newcommand{\questionOne} {
+    % Question 1 - Define overfitting
     \youranswer{the concept where the model fits too closely to the training data, resulting in the loss of ability to make reliable predictions}
 }
 
@@ -45,27 +46,32 @@
 
 %% Question 5:
 \newcommand{\questionFive} {
+    % Question 5 - Explain what overfitting is in detail and in your own words
     \youranswer{it contains more parameters than what the data should require, resulting in the model's sensitivity to the irrelevant details and failure to project the general trend}
 }
 
 %% Question 6:
 \newcommand{\questionSix} {
+    % Question 6 - Discuss ``why'' and ``how'' overfitting occurs, and ``how'' one can identify it is happening
     \youranswer{Overfitting occurs when the same model is trained to exclusively maximizing performance on the training data repeatedly, causing the model to essentially "remembering" the training data and unable to identify generalizations within. This can usually be identified by a low error on training data and a high error on unseen data. During training, it can also be identified by the increase in error on validation data}
 }
 
 %% Question 7:
 \newcommand{\questionSeven} {
+    % Question 7 - Explain what these figures contain and how the curves evolve, and spot where overfitting occurs. Reason based on the min/max points and velocities (direction and magnitude of change) of the accuracy and error curves
     \youranswer{after around epoch 16, model's ability to predict training data continues to improve while accuracy for validation data gradually decreases. Figure 1b tells the same story from a different perspective—the error for training data decreases gradually throughout the process, but the error for unseen data rises drastically. These two graphs show that after around epoch 16, the model become too accustomed to the training data, losing the ability to identify common attributes within that would help it process new data}
 }
 
 %% Question 8:
 \newcommand{\questionEight} {
-    \youranswer{Question 8 - Explain your network width experiment results by using the relevant figure and table}
+    % Question 8 - Explain your network width experiment results by using the relevant figure and table
+    \youranswer{validation data accuracy rises consistently across all 100 epoches for the model with 32 neurons in the hidden layer, while the same attribute for the models with 64 and 128 neurons increases much faster in the beginning but dipped after epoch 31 and 16, respectively. Figure 1b tells the same story from a different perspective—the error for training data decreases gradually throughout the process, but the error for unseen data rises slightly for the model with 64 neurons and drastically for that with 128. These two graphs show that the model with 32 neurons seem to be on a good trajectory to becoming a successful model, while the one with 64 neurons is on the edge of overtraining. For the model with 128 neurons, the drastic increase in error after epoch 16 indicates that the model is undeniably overcomplicated, resulting in the model's excessive affinity towards the training data, losing the ability to make useful predictions}
 }
 
 %% Question 9:
 \newcommand{\questionNine} {
-    \youranswer{Question 9 - Discuss whether varying width affects the results in a consistent way, and whether the results are expected and match well with the prior knowledge (by which we mean your expectations as are formed from the relevant Theory and literature)}
+    % Question 9 - Discuss whether varying width affects the results in a consistent way, and whether the results are expected and match well with the prior knowledge (by which we mean your expectations as are formed from the relevant Theory and literature)
+    \youranswer{Figure 2 and Table 1 shows that while increasing the hidden layer width can increase model performance during initial training, evidented by the much faster fitting, it can also hinder the resulting model due to overfitting. This result is expected because a more complicated network is more prone to overfitting}
 }
 
 %% Question 10:
@@ -127,50 +133,50 @@
 
 %% Question Figure 2:
 \newcommand{\questionFigureTwo} {
-    \youranswer{Question Figure 2 - Replace the images in Figure 2 with figures depicting the accuracy and error, training and validation curves for your experiments varying the number of hidden units.
+    % \youranswer{Question Figure 2 - Replace the images in Figure 2 with figures depicting the accuracy and error, training and validation curves for your experiments varying the number of hidden units.
 
-        \begin{figure}[t]
+    \begin{figure}[t]
+        \centering
+        \begin{subfigure}{\linewidth}
+            \includegraphics[width=\linewidth]{figures/fig-2-2.png}
+            \caption{accuracy by epoch}
+            \label{fig:width_acccurves}
+        \end{subfigure}
+        \begin{subfigure}{\linewidth}
             \centering
-            \begin{subfigure}{\linewidth}
-                \includegraphics[width=\linewidth]{figures/fig-2-1.png}
-                \caption{accuracy by epoch}
-                \label{fig:width_acccurves}
-            \end{subfigure}
-            \begin{subfigure}{\linewidth}
-                \centering
-                \includegraphics[width=\linewidth]{figures/fig-2-2.png}
-                \caption{error by epoch}
-                \label{fig:width_errorcurves}
-            \end{subfigure}
-            \caption{Training and validation curves in terms of classification accuracy (a) and cross-entropy error (b) on the EMNIST dataset for different network widths.}
-            \label{fig:width}
-        \end{figure}
+            \includegraphics[width=\linewidth]{figures/fig-2-1.png}
+            \caption{error by epoch}
+            \label{fig:width_errorcurves}
+        \end{subfigure}
+        \caption{Training and validation curves in terms of classification accuracy (a) and cross-entropy error (b) on the EMNIST dataset for different network widths.}
+        \label{fig:width}
+    \end{figure}
 
-    }
+    % }
 }
 
 %% Question Figure 3:
 \newcommand{\questionFigureThree} {
-    \youranswer{Question Figure 3 - Replace these images with figures depicting the accuracy and error, training and validation curves for your experiments varying the number of hidden layers.
+    % \youranswer{Question Figure 3 - Replace these images with figures depicting the accuracy and error, training and validation curves for your experiments varying the number of hidden layers.
 
-        \begin{figure}[t]
+    \begin{figure}[t]
+        \centering
+        \begin{subfigure}{\linewidth}
+            \includegraphics[width=\linewidth]{figures/fig-3-2.png}
+            \caption{accuracy by epoch}
+            \label{fig:depth_acccurves}
+        \end{subfigure}
+        \begin{subfigure}{\linewidth}
             \centering
-            \begin{subfigure}{\linewidth}
-                \includegraphics[width=\linewidth]{figures/empty_acc_curve_depth.png}
-                \caption{accuracy by epoch}
-                \label{fig:depth_acccurves}
-            \end{subfigure}
-            \begin{subfigure}{\linewidth}
-                \centering
-                \includegraphics[width=\linewidth]{figures/empty_error_curve_depth.png}
-                \caption{error by epoch}
-                \label{fig:depth_errorcurves}
-            \end{subfigure}
-            \caption{Training and validation curves in terms of classification accuracy (a) and cross-entropy error (b) on the EMNIST dataset for different network depths.}
-            \label{fig:depth}
-        \end{figure}
+            \includegraphics[width=\linewidth]{figures/fig-3-1.png}
+            \caption{error by epoch}
+            \label{fig:depth_errorcurves}
+        \end{subfigure}
+        \caption{Training and validation curves in terms of classification accuracy (a) and cross-entropy error (b) on the EMNIST dataset for different network depths.}
+        \label{fig:depth}
+    \end{figure}
 
-    }
+    % }
 }
 
 %% Question Figure 4:
@@ -207,52 +213,49 @@
 
 %% Question Table 1:
 \newcommand{\questionTableOne} {
-    \youranswer{
-        % Question Table 1 - Fill in Table 1 with the results from your experiments varying the number of hidden units.
+    % \youranswer{Question Table 1 - Fill in Table 1 with the results from your experiments varying the number of hidden units.
 
-        \begin{table}[t]
-            \centering
-            \begin{tabular}{c|cc}
-                \toprule
-                \# hidden units & val. acc. & generalization gap \\
-                \midrule
-                32              & 78.5\%    & 0.152              \\
-                64              & 80.6\%    & 0.342              \\
-                128             & 80.2\%    & 0.840              \\
-                \bottomrule
-            \end{tabular}
-            \caption{Validation accuracy (\%) and generalization gap (in terms of cross-entropy error) for varying network widths on the EMNIST dataset.}
-            \label{tab:width_exp}
-        \end{table}
-    }
+    \begin{table}[t]
+        \centering
+        \begin{tabular}{c|cc}
+            \toprule
+            \# hidden units & val. acc. & generalization gap \\
+            \midrule
+            32              & 78.5\%    & 0.152              \\
+            64              & 80.6\%    & 0.342              \\
+            128             & 80.2\%    & 0.840              \\
+            \bottomrule
+        \end{tabular}
+        \caption{Validation accuracy (\%) and generalization gap (in terms of cross-entropy error) for varying network widths on the EMNIST dataset.}
+        \label{tab:width_exp}
+    \end{table}
+    % }
 }
 
 %% Question Table 2:
 \newcommand{\questionTableTwo} {
-    \youranswer{
-        % Question Table 2 - Fill in Table 2 with the results from your experiments varying the number of hidden layers.
+    % \youranswer{Question Table 2 - Fill in Table 2 with the results from your experiments varying the number of hidden layers.
 
-        \begin{table}[t]
-            \centering
-            \begin{tabular}{c|cc}
-                \toprule
-                \# hidden layers & val. acc. & generalization gap \\
-                \midrule
-                1                & 80.2\%    & 0.840              \\
-                2                & 81.5\%    & 1.48               \\
-                3                & 82.2\%    & 1.58               \\
-                \bottomrule
-            \end{tabular}
-            \caption{Validation accuracy (\%) and generalization gap (in terms of cross-entropy error) for varying network depths on the EMNIST dataset.}
-            \label{tab:depth_exps}
-        \end{table}
-    }
+    \begin{table}[t]
+        \centering
+        \begin{tabular}{c|cc}
+            \toprule
+            \# hidden layers & val. acc. & generalization gap \\
+            \midrule
+            1                & 80.2\%    & 0.840              \\
+            2                & 81.5\%    & 1.478              \\
+            3                & 82.2\%    & 1.578              \\
+            \bottomrule
+        \end{tabular}
+        \caption{Validation accuracy (\%) and generalization gap (in terms of cross-entropy error) for varying network depths on the EMNIST dataset.}
+        \label{tab:depth_exps}
+    \end{table}
+    % }
 }
 
 %% Question Table 3:
 \newcommand{\questionTableThree} {
-    \youranswer{
-        Question Table 3 - Fill in Table 3 with the results from your experiments varying the hyperparameter values for each of L1 regularisation, L2 regularisation, and Dropout (use the values shown on the table) as well as the results for your experiments combining L1/L2 and Dropout (you will have to pick what combinations of hyperparameter values to test for the combined experiments; each of the combined experiments will need to use Dropout and either L1 or L2 regularisation; run an experiment for each of 8 different combinations). Use \textit{italics} to print the best result per criterion for each set of experiments, and \textbf{bold} for the overall best result per criterion.
+    \youranswer{Question Table 3 - Fill in Table 3 with the results from your experiments varying the hyperparameter values for each of L1 regularisation, L2 regularisation, and Dropout (use the values shown on the table) as well as the results for your experiments combining L1/L2 and Dropout (you will have to pick what combinations of hyperparameter values to test for the combined experiments; each of the combined experiments will need to use Dropout and either L1 or L2 regularisation; run an experiment for each of 8 different combinations). Use \textit{italics} to print the best result per criterion for each set of experiments, and \textbf{bold} for the overall best result per criterion.
 
         \begin{table*}[t]
             \centering
