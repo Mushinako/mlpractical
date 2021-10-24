@@ -11,6 +11,7 @@ Some layers will have learnable parameters and so will additionally define
 methods for getting and setting parameter and calculating gradients with
 respect to the layer parameters.
 """
+from __future__ import annotations
 
 import numpy as np
 import mlp.initialisers as init
@@ -695,20 +696,16 @@ class DropoutLayer(StochasticLayer):
         self._mask = None
 
     def create_mask(
-        self, size: tuple[_BatchSize, int]
-    ) -> np.ndarray[tuple[_BatchSize, int], np.dtype[np.bool_]]:
+        self, shape: tuple[int, ...]
+    ) -> np.ndarray[tuple[int, ...], np.dtype[np.bool_]]:
         """
         Create a mask of given size.
 
         Args:
-            size (tuple[int, int]): The size of the mask
+            shape (tuple[int, ...]): The size of the mask
         """
-        if self.share_across_batch:
-            mask_val = self.rng.uniform(low=0.0, high=1.0, size=(1, size[1])).repeat(
-                size[0], axis=0
-            )
-        else:
-            mask_val = self.rng.uniform(low=0.0, high=0.1, size=size)
+        mask_shape = shape[1:] if self.share_across_batch else shape
+        mask_val = self.rng.uniform(low=0.0, high=1.0, size=mask_shape)
         self._mask = mask_val < self.incl_prob
         return self._mask
 
@@ -742,10 +739,7 @@ class DropoutLayer(StochasticLayer):
         if not stochastic:
             return inputs * self.incl_prob
 
-        mask_shape = inputs.shape[1] if self.share_across_batch else inputs.shape
-        mask_val = self.rng.uniform(low=0.0, high=1.0, size=mask_shape)
-        mask = mask_val < self.incl_prob
-        return inputs * mask
+        return inputs * self.create_mask(inputs.shape)
 
     def bprop(
         self,
