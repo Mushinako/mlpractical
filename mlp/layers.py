@@ -671,7 +671,7 @@ class RadialBasisFunctionLayer(Layer):
 class DropoutLayer(StochasticLayer):
     """Layer which stochastically drops input dimensions in its output."""
 
-    _mask: None | np.ndarray[tuple[int, int], np.dtype[np.bool_]]
+    _mask: None | np.ndarray[tuple[_BatchSize, int], np.dtype[np.bool_]]
 
     def __init__(
         self,
@@ -694,24 +694,30 @@ class DropoutLayer(StochasticLayer):
         self.share_across_batch = share_across_batch
         self._mask = None
 
-    def get_mask(
+    def create_mask(
         self, size: tuple[_BatchSize, int]
     ) -> np.ndarray[tuple[_BatchSize, int], np.dtype[np.bool_]]:
         """
-        Get a mask of given size.
+        Create a mask of given size.
 
         Args:
             size (tuple[int, int]): The size of the mask
         """
-        if self._mask is None:
-            if self.share_across_batch:
-                mask_val = self.rng.uniform(
-                    low=0.0, high=1.0, size=(1, size[1])
-                ).repeat(size[0], axis=0)
-            else:
-                mask_val = self.rng.uniform(low=0.0, high=0.1, size=size)
-            self._mask = mask_val < self.incl_prob
+        if self.share_across_batch:
+            mask_val = self.rng.uniform(low=0.0, high=1.0, size=(1, size[1])).repeat(
+                size[0], axis=0
+            )
+        else:
+            mask_val = self.rng.uniform(low=0.0, high=0.1, size=size)
+        self._mask = mask_val < self.incl_prob
+        return self._mask
 
+    def get_mask(self) -> np.ndarray[tuple[_BatchSize, int], np.dtype[np.bool_]]:
+        """
+        Get existing mask.
+        """
+        if self._mask is None:
+            raise ValueError("No existing mask")
         return self._mask
 
     def fprop(
@@ -733,9 +739,13 @@ class DropoutLayer(StochasticLayer):
         Returns:
             outputs: Array of layer outputs of shape (batch_size, output_dim).
         """
-        outputs = inputs[self.get_mask(inputs.shape)]
-        # Stochastic?
-        return outputs
+        if not stochastic:
+            return inputs * self.incl_prob
+
+        mask_shape = inputs.shape[1] if self.share_across_batch else inputs.shape
+        mask_val = self.rng.uniform(low=0.0, high=1.0, size=mask_shape)
+        mask = mask_val < self.incl_prob
+        return inputs * mask
 
     def bprop(
         self,
@@ -762,7 +772,7 @@ class DropoutLayer(StochasticLayer):
             Array of gradients with respect to the layer inputs of shape
             (batch_size, input_dim).
         """
-        raise NotImplementedError
+        return grads_wrt_outputs * self.get_mask()
 
     def __repr__(self):
         return "DropoutLayer(incl_prob={0:.1f})".format(self.incl_prob)
