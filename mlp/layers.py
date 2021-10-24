@@ -20,9 +20,10 @@ from mlp import DEFAULT_SEED
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    _BatchSize = int
-    _InputDim = int
-    _OutputDim = int
+    _NDArrayShape = tuple[int, ...]
+    _InputNDArray = np.ndarray[_NDArrayShape, np.dtype[np.float64]]
+    _OutputNDArray = np.ndarray[_NDArrayShape, np.dtype[np.float64]]
+    _MaskNDArray = np.ndarray[_NDArrayShape, np.dtype[np.bool_]]
 
 
 class Layer(object):
@@ -193,11 +194,7 @@ class StochasticLayer(Layer):
             rng = np.random.RandomState(DEFAULT_SEED)
         self.rng = rng
 
-    def fprop(
-        self,
-        inputs: np.ndarray[tuple[_BatchSize, _InputDim], np.dtype[np.float64]],
-        stochastic: bool = True,
-    ) -> np.ndarray[tuple[_BatchSize, _OutputDim], np.dtype[np.float64]]:
+    def fprop(self, inputs: _InputNDArray, stochastic: bool = True) -> _OutputNDArray:
         """Forward propagates activations through the layer transformation.
 
         Args:
@@ -216,12 +213,10 @@ class StochasticLayer(Layer):
 
     def bprop(
         self,
-        inputs: np.ndarray[tuple[_BatchSize, _InputDim], np.dtype[np.float64]],
-        outputs: np.ndarray[tuple[_BatchSize, _OutputDim], np.dtype[np.float64]],
-        grads_wrt_outputs: np.ndarray[
-            tuple[_BatchSize, _OutputDim], np.dtype[np.float64]
-        ],
-    ) -> np.ndarray[tuple[_BatchSize, _InputDim], np.dtype[np.float64]]:
+        inputs: _InputNDArray,
+        outputs: _OutputNDArray,
+        grads_wrt_outputs: _OutputNDArray,
+    ) -> _InputNDArray:
         """Back propagates gradients through a layer.
 
         Given gradients with respect to the outputs of the layer calculates the
@@ -672,7 +667,7 @@ class RadialBasisFunctionLayer(Layer):
 class DropoutLayer(StochasticLayer):
     """Layer which stochastically drops input dimensions in its output."""
 
-    _mask: None | np.ndarray[tuple[_BatchSize, int], np.dtype[np.bool_]]
+    _mask: None | _MaskNDArray
 
     def __init__(
         self,
@@ -695,9 +690,7 @@ class DropoutLayer(StochasticLayer):
         self.share_across_batch = share_across_batch
         self._mask = None
 
-    def create_mask(
-        self, shape: tuple[int, ...]
-    ) -> np.ndarray[tuple[int, ...], np.dtype[np.bool_]]:
+    def create_mask(self, shape: _NDArrayShape) -> _MaskNDArray:
         """
         Create a mask of given size.
 
@@ -709,7 +702,7 @@ class DropoutLayer(StochasticLayer):
         self._mask = mask_val < self.incl_prob
         return self._mask
 
-    def get_mask(self) -> np.ndarray[tuple[_BatchSize, int], np.dtype[np.bool_]]:
+    def get_mask(self) -> _MaskNDArray:
         """
         Get existing mask.
         """
@@ -717,11 +710,7 @@ class DropoutLayer(StochasticLayer):
             raise ValueError("No existing mask")
         return self._mask
 
-    def fprop(
-        self,
-        inputs: np.ndarray[tuple[_BatchSize, _InputDim], np.dtype[np.float64]],
-        stochastic: bool = True,
-    ) -> np.ndarray[tuple[_BatchSize, _OutputDim], np.dtype[np.float64]]:
+    def fprop(self, inputs: _InputNDArray, stochastic: bool = True) -> _OutputNDArray:
         """Forward propagates activations through the layer transformation.
 
         Args:
@@ -736,19 +725,16 @@ class DropoutLayer(StochasticLayer):
         Returns:
             outputs: Array of layer outputs of shape (batch_size, output_dim).
         """
-        if not stochastic:
-            return inputs * self.incl_prob
-
-        return inputs * self.create_mask(inputs.shape)
+        return inputs * (
+            self.create_mask(inputs.shape) if stochastic else self.incl_prob
+        )
 
     def bprop(
         self,
-        inputs: np.ndarray[tuple[_BatchSize, _InputDim], np.dtype[np.float64]],
-        outputs: np.ndarray[tuple[_BatchSize, _OutputDim], np.dtype[np.float64]],
-        grads_wrt_outputs: np.ndarray[
-            tuple[_BatchSize, _OutputDim], np.dtype[np.float64]
-        ],
-    ) -> np.ndarray[tuple[_BatchSize, _InputDim], np.dtype[np.float64]]:
+        inputs: _InputNDArray,
+        outputs: _OutputNDArray,
+        grads_wrt_outputs: _OutputNDArray,
+    ) -> _InputNDArray:
         """Back propagates gradients through a layer.
 
         Given gradients with respect to the outputs of the layer calculates the
