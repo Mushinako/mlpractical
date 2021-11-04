@@ -106,12 +106,12 @@
 
 %% Question 16:
 \newcommand{\questionSixteen} {
-    \youranswer{Question 16 - Explain the motivation behind Maxout Networks as presented in \cite{goodfellow2013maxout}}
+    \youranswer{it remains unproven whether dropout performs model average in these cases, and it may be worthwhile to design a model specific fordropout instead of applying it on arbitrary models to maximize performance}
 }
 
 %% Question 17:
 \newcommand{\questionSeventeen} {
-    \youranswer{Question 17 - State whether Dropout is compatible (can be used together) with Maxout and explain why}
+    \youranswer{Maxout is fully compatible with dropout. The dropout mask can be applied directly to the layer input just as it is done on conventional models. As such, the dropout mask dictates whether a neuron is included or excluded across all subspaces, and selecting the maximum across all subspaces still preserves the input's dropout status. Plus, because Maxout takes the maximum of value across the subspaces, an input can be mapped to different piecewise functions by changing the dropout mask, isolating the input from local noises}
 }
 
 %% Question 18:
