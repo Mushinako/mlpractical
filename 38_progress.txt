@@ -1,0 +1,286 @@
+Namespace(batch_size=100, block_type='conv_block', continue_from_epoch=-1, experiment_name='VGG_38_experiment', image_height=32, image_num_channels=3, image_width=32, num_blocks_per_stage=5, num_classes=100, num_epochs=100, num_filters=32, num_stages=3, seed=0, use_gpu=True, weight_decay_coefficient=0)
+Downloading https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz to data/cifar-100-python.tar.gz
+train (47500, 32, 32, 3)
+train (47500,)
+Files already downloaded and verified
+val (2500, 32, 32, 3)
+val (2500,)
+Files already downloaded and verified
+test (10000, 32, 32, 3)
+test (10000,)
+Building basic block of ConvolutionalNetwork using input shape (100, 3, 32, 32)
+torch.Size([100, 32, 32, 32])
+torch.Size([100, 32, 32, 32])
+torch.Size([100, 32, 32, 32])
+torch.Size([100, 32, 32, 32])
+torch.Size([100, 32, 32, 32])
+torch.Size([100, 32, 32, 32])
+torch.Size([100, 32, 16, 16])
+torch.Size([100, 32, 16, 16])
+torch.Size([100, 32, 16, 16])
+torch.Size([100, 32, 16, 16])
+torch.Size([100, 32, 16, 16])
+torch.Size([100, 32, 16, 16])
+torch.Size([100, 32, 8, 8])
+torch.Size([100, 32, 8, 8])
+torch.Size([100, 32, 8, 8])
+torch.Size([100, 32, 8, 8])
+torch.Size([100, 32, 8, 8])
+torch.Size([100, 32, 8, 8])
+torch.Size([100, 32, 4, 4])
+shape before final linear layer torch.Size([100, 32, 1, 1])
+Block is built, output volume is torch.Size([100, 100])
+Use GPU 0
+here
+System learnable parameters
+model.layer_dict.input_conv.layer_dict.conv_0.weight torch.Size([32, 3, 3, 3])
+model.layer_dict.input_conv.layer_dict.bn_0.weight torch.Size([32])
+model.layer_dict.input_conv.layer_dict.bn_0.bias torch.Size([32])
+model.layer_dict.block_0_0.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_0_0.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_0_1.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_0_1.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_0_2.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_0_2.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_0_3.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_0_3.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_0_4.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_0_4.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.reduction_block_0.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.reduction_block_0.layer_dict.conv_0.bias torch.Size([32])
+model.layer_dict.reduction_block_0.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.reduction_block_0.layer_dict.conv_1.bias torch.Size([32])
+model.layer_dict.block_1_0.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_1_0.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_1_1.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_1_1.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_1_2.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_1_2.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_1_3.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_1_3.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_1_4.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_1_4.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.reduction_block_1.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.reduction_block_1.layer_dict.conv_0.bias torch.Size([32])
+model.layer_dict.reduction_block_1.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.reduction_block_1.layer_dict.conv_1.bias torch.Size([32])
+model.layer_dict.block_2_0.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_2_0.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_2_1.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_2_1.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_2_2.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_2_2.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_2_3.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_2_3.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_2_4.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.block_2_4.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.reduction_block_2.layer_dict.conv_0.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.reduction_block_2.layer_dict.conv_0.bias torch.Size([32])
+model.layer_dict.reduction_block_2.layer_dict.conv_1.weight torch.Size([32, 32, 3, 3])
+model.layer_dict.reduction_block_2.layer_dict.conv_1.bias torch.Size([32])
+model.logit_linear_layer.weight torch.Size([100, 32])
+model.logit_linear_layer.bias torch.Size([100])
+Total number of parameters 336196
+Total number of conv layers 38
+Total number of linear layers 1
+Epoch 0: train_acc_0.0095_train_loss_4.6086_val_acc_0.0104_val_loss_4.6067 epoch time 139.3298 seconds
+Generating Gradient Flow Plot at epoch 0
+Epoch 1: train_acc_0.0089_train_loss_4.6065_val_acc_0.0076_val_loss_4.6063 epoch time 116.9607 seconds
+Generating Gradient Flow Plot at epoch 1
+Epoch 2: train_acc_0.0086_train_loss_4.6061_val_acc_0.0076_val_loss_4.6066 epoch time 116.8529 seconds
+Generating Gradient Flow Plot at epoch 2
+Epoch 3: train_acc_0.0092_train_loss_4.6061_val_acc_0.0076_val_loss_4.6068 epoch time 117.3701 seconds
+Generating Gradient Flow Plot at epoch 3
+Epoch 4: train_acc_0.0093_train_loss_4.6060_val_acc_0.0064_val_loss_4.6068 epoch time 116.5560 seconds
+Generating Gradient Flow Plot at epoch 4
+Epoch 5: train_acc_0.0089_train_loss_4.6059_val_acc_0.0068_val_loss_4.6071 epoch time 116.9805 seconds
+Generating Gradient Flow Plot at epoch 5
+Epoch 6: train_acc_0.0088_train_loss_4.6059_val_acc_0.0076_val_loss_4.6069 epoch time 117.1499 seconds
+Generating Gradient Flow Plot at epoch 6
+Epoch 7: train_acc_0.0094_train_loss_4.6058_val_acc_0.0064_val_loss_4.6067 epoch time 116.3944 seconds
+Generating Gradient Flow Plot at epoch 7
+Epoch 8: train_acc_0.0088_train_loss_4.6058_val_acc_0.0064_val_loss_4.6069 epoch time 117.2745 seconds
+Generating Gradient Flow Plot at epoch 8
+Epoch 9: train_acc_0.0093_train_loss_4.6058_val_acc_0.0064_val_loss_4.6067 epoch time 117.3381 seconds
+Generating Gradient Flow Plot at epoch 9
+Epoch 10: train_acc_0.0096_train_loss_4.6058_val_acc_0.0072_val_loss_4.6068 epoch time 117.2088 seconds
+Generating Gradient Flow Plot at epoch 10
+Epoch 11: train_acc_0.0091_train_loss_4.6058_val_acc_0.0072_val_loss_4.6068 epoch time 117.4887 seconds
+Generating Gradient Flow Plot at epoch 11
+Epoch 12: train_acc_0.0096_train_loss_4.6057_val_acc_0.0076_val_loss_4.6068 epoch time 117.4430 seconds
+Generating Gradient Flow Plot at epoch 12
+Epoch 13: train_acc_0.0092_train_loss_4.6057_val_acc_0.0076_val_loss_4.6070 epoch time 116.8704 seconds
+Generating Gradient Flow Plot at epoch 13
+Epoch 14: train_acc_0.0087_train_loss_4.6057_val_acc_0.0064_val_loss_4.6068 epoch time 116.9036 seconds
+Generating Gradient Flow Plot at epoch 14
+Epoch 15: train_acc_0.0091_train_loss_4.6057_val_acc_0.0064_val_loss_4.6068 epoch time 116.4403 seconds
+Generating Gradient Flow Plot at epoch 15
+Epoch 16: train_acc_0.0092_train_loss_4.6057_val_acc_0.0064_val_loss_4.6070 epoch time 116.8740 seconds
+Generating Gradient Flow Plot at epoch 16
+Epoch 17: train_acc_0.0091_train_loss_4.6057_val_acc_0.0072_val_loss_4.6067 epoch time 116.9743 seconds
+Generating Gradient Flow Plot at epoch 17
+Epoch 18: train_acc_0.0091_train_loss_4.6057_val_acc_0.0064_val_loss_4.6069 epoch time 117.1667 seconds
+Generating Gradient Flow Plot at epoch 18
+Epoch 19: train_acc_0.0091_train_loss_4.6057_val_acc_0.0072_val_loss_4.6068 epoch time 117.4266 seconds
+Generating Gradient Flow Plot at epoch 19
+Epoch 20: train_acc_0.0095_train_loss_4.6057_val_acc_0.0064_val_loss_4.6069 epoch time 117.4688 seconds
+Generating Gradient Flow Plot at epoch 20
+Epoch 21: train_acc_0.0094_train_loss_4.6057_val_acc_0.0072_val_loss_4.6069 epoch time 116.5722 seconds
+Generating Gradient Flow Plot at epoch 21
+Epoch 22: train_acc_0.0094_train_loss_4.6056_val_acc_0.0064_val_loss_4.6069 epoch time 117.2968 seconds
+Generating Gradient Flow Plot at epoch 22
+Epoch 23: train_acc_0.0095_train_loss_4.6056_val_acc_0.0064_val_loss_4.6067 epoch time 117.3102 seconds
+Generating Gradient Flow Plot at epoch 23
+Epoch 24: train_acc_0.0094_train_loss_4.6056_val_acc_0.0072_val_loss_4.6068 epoch time 116.8798 seconds
+Generating Gradient Flow Plot at epoch 24
+Epoch 25: train_acc_0.0088_train_loss_4.6056_val_acc_0.0064_val_loss_4.6068 epoch time 117.3196 seconds
+Generating Gradient Flow Plot at epoch 25
+Epoch 26: train_acc_0.0093_train_loss_4.6056_val_acc_0.0076_val_loss_4.6068 epoch time 117.0279 seconds
+Generating Gradient Flow Plot at epoch 26
+Epoch 27: train_acc_0.0088_train_loss_4.6056_val_acc_0.0064_val_loss_4.6068 epoch time 116.5338 seconds
+Generating Gradient Flow Plot at epoch 27
+Epoch 28: train_acc_0.0099_train_loss_4.6056_val_acc_0.0064_val_loss_4.6068 epoch time 117.5408 seconds
+Generating Gradient Flow Plot at epoch 28
+Epoch 29: train_acc_0.0095_train_loss_4.6056_val_acc_0.0064_val_loss_4.6068 epoch time 117.6846 seconds
+Generating Gradient Flow Plot at epoch 29
+Epoch 30: train_acc_0.0090_train_loss_4.6056_val_acc_0.0064_val_loss_4.6067 epoch time 116.8637 seconds
+Generating Gradient Flow Plot at epoch 30
+Epoch 31: train_acc_0.0088_train_loss_4.6055_val_acc_0.0064_val_loss_4.6069 epoch time 116.1131 seconds
+Generating Gradient Flow Plot at epoch 31
+Epoch 32: train_acc_0.0100_train_loss_4.6055_val_acc_0.0064_val_loss_4.6068 epoch time 116.8278 seconds
+Generating Gradient Flow Plot at epoch 32
+Epoch 33: train_acc_0.0096_train_loss_4.6055_val_acc_0.0064_val_loss_4.6069 epoch time 116.7144 seconds
+Generating Gradient Flow Plot at epoch 33
+Epoch 34: train_acc_0.0093_train_loss_4.6055_val_acc_0.0064_val_loss_4.6069 epoch time 117.0705 seconds
+Generating Gradient Flow Plot at epoch 34
+Epoch 35: train_acc_0.0090_train_loss_4.6055_val_acc_0.0064_val_loss_4.6068 epoch time 116.8890 seconds
+Generating Gradient Flow Plot at epoch 35
+Epoch 36: train_acc_0.0099_train_loss_4.6055_val_acc_0.0072_val_loss_4.6067 epoch time 116.3800 seconds
+Generating Gradient Flow Plot at epoch 36
+Epoch 37: train_acc_0.0093_train_loss_4.6056_val_acc_0.0064_val_loss_4.6068 epoch time 116.8872 seconds
+Generating Gradient Flow Plot at epoch 37
+Epoch 38: train_acc_0.0094_train_loss_4.6055_val_acc_0.0064_val_loss_4.6068 epoch time 117.3587 seconds
+Generating Gradient Flow Plot at epoch 38
+Epoch 39: train_acc_0.0092_train_loss_4.6055_val_acc_0.0064_val_loss_4.6068 epoch time 116.5302 seconds
+Generating Gradient Flow Plot at epoch 39
+Epoch 40: train_acc_0.0091_train_loss_4.6054_val_acc_0.0064_val_loss_4.6068 epoch time 116.6673 seconds
+Generating Gradient Flow Plot at epoch 40
+Epoch 41: train_acc_0.0087_train_loss_4.6054_val_acc_0.0064_val_loss_4.6068 epoch time 116.0312 seconds
+Generating Gradient Flow Plot at epoch 41
+Epoch 42: train_acc_0.0089_train_loss_4.6054_val_acc_0.0064_val_loss_4.6068 epoch time 116.8571 seconds
+Generating Gradient Flow Plot at epoch 42
+Epoch 43: train_acc_0.0098_train_loss_4.6054_val_acc_0.0064_val_loss_4.6069 epoch time 117.2410 seconds
+Generating Gradient Flow Plot at epoch 43
+Epoch 44: train_acc_0.0088_train_loss_4.6054_val_acc_0.0064_val_loss_4.6069 epoch time 116.6143 seconds
+Generating Gradient Flow Plot at epoch 44
+Epoch 45: train_acc_0.0092_train_loss_4.6054_val_acc_0.0064_val_loss_4.6069 epoch time 117.4946 seconds
+Generating Gradient Flow Plot at epoch 45
+Epoch 46: train_acc_0.0100_train_loss_4.6054_val_acc_0.0064_val_loss_4.6069 epoch time 117.5846 seconds
+Generating Gradient Flow Plot at epoch 46
+Epoch 47: train_acc_0.0097_train_loss_4.6054_val_acc_0.0064_val_loss_4.6069 epoch time 117.3309 seconds
+Generating Gradient Flow Plot at epoch 47
+Epoch 48: train_acc_0.0096_train_loss_4.6054_val_acc_0.0064_val_loss_4.6069 epoch time 116.8860 seconds
+Generating Gradient Flow Plot at epoch 48
+Epoch 49: train_acc_0.0096_train_loss_4.6054_val_acc_0.0064_val_loss_4.6069 epoch time 117.2766 seconds
+Generating Gradient Flow Plot at epoch 49
+Epoch 50: train_acc_0.0100_train_loss_4.6054_val_acc_0.0064_val_loss_4.6069 epoch time 116.4254 seconds
+Generating Gradient Flow Plot at epoch 50
+Epoch 51: train_acc_0.0092_train_loss_4.6054_val_acc_0.0072_val_loss_4.6070 epoch time 116.3935 seconds
+Generating Gradient Flow Plot at epoch 51
+Epoch 52: train_acc_0.0095_train_loss_4.6054_val_acc_0.0064_val_loss_4.6069 epoch time 117.1276 seconds
+Generating Gradient Flow Plot at epoch 52
+Epoch 53: train_acc_0.0098_train_loss_4.6053_val_acc_0.0064_val_loss_4.6069 epoch time 117.1100 seconds
+Generating Gradient Flow Plot at epoch 53
+Epoch 54: train_acc_0.0097_train_loss_4.6053_val_acc_0.0064_val_loss_4.6069 epoch time 117.4761 seconds
+Generating Gradient Flow Plot at epoch 54
+Epoch 55: train_acc_0.0095_train_loss_4.6053_val_acc_0.0064_val_loss_4.6068 epoch time 117.4524 seconds
+Generating Gradient Flow Plot at epoch 55
+Epoch 56: train_acc_0.0090_train_loss_4.6053_val_acc_0.0064_val_loss_4.6069 epoch time 116.7431 seconds
+Generating Gradient Flow Plot at epoch 56
+Epoch 57: train_acc_0.0087_train_loss_4.6053_val_acc_0.0064_val_loss_4.6068 epoch time 116.7956 seconds
+Generating Gradient Flow Plot at epoch 57
+Epoch 58: train_acc_0.0096_train_loss_4.6053_val_acc_0.0064_val_loss_4.6069 epoch time 117.0839 seconds
+Generating Gradient Flow Plot at epoch 58
+Epoch 59: train_acc_0.0092_train_loss_4.6053_val_acc_0.0064_val_loss_4.6068 epoch time 117.1601 seconds
+Generating Gradient Flow Plot at epoch 59
+Epoch 60: train_acc_0.0093_train_loss_4.6053_val_acc_0.0064_val_loss_4.6069 epoch time 116.1876 seconds
+Generating Gradient Flow Plot at epoch 60
+Epoch 61: train_acc_0.0098_train_loss_4.6053_val_acc_0.0064_val_loss_4.6069 epoch time 116.9464 seconds
+Generating Gradient Flow Plot at epoch 61
+Epoch 62: train_acc_0.0097_train_loss_4.6053_val_acc_0.0064_val_loss_4.6068 epoch time 117.2558 seconds
+Generating Gradient Flow Plot at epoch 62
+Epoch 63: train_acc_0.0100_train_loss_4.6053_val_acc_0.0064_val_loss_4.6069 epoch time 117.4405 seconds
+Generating Gradient Flow Plot at epoch 63
+Epoch 64: train_acc_0.0098_train_loss_4.6053_val_acc_0.0064_val_loss_4.6069 epoch time 117.4842 seconds
+Generating Gradient Flow Plot at epoch 64
+Epoch 65: train_acc_0.0098_train_loss_4.6053_val_acc_0.0064_val_loss_4.6069 epoch time 117.4607 seconds
+Generating Gradient Flow Plot at epoch 65
+Epoch 66: train_acc_0.0102_train_loss_4.6053_val_acc_0.0064_val_loss_4.6068 epoch time 117.4403 seconds
+Generating Gradient Flow Plot at epoch 66
+Epoch 67: train_acc_0.0097_train_loss_4.6053_val_acc_0.0064_val_loss_4.6069 epoch time 117.4977 seconds
+Generating Gradient Flow Plot at epoch 67
+Epoch 68: train_acc_0.0095_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.4629 seconds
+Generating Gradient Flow Plot at epoch 68
+Epoch 69: train_acc_0.0095_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.5490 seconds
+Generating Gradient Flow Plot at epoch 69
+Epoch 70: train_acc_0.0098_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.5102 seconds
+Generating Gradient Flow Plot at epoch 70
+Epoch 71: train_acc_0.0098_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.5472 seconds
+Generating Gradient Flow Plot at epoch 71
+Epoch 72: train_acc_0.0096_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.6176 seconds
+Generating Gradient Flow Plot at epoch 72
+Epoch 73: train_acc_0.0095_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.6975 seconds
+Generating Gradient Flow Plot at epoch 73
+Epoch 74: train_acc_0.0100_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.5168 seconds
+Generating Gradient Flow Plot at epoch 74
+Epoch 75: train_acc_0.0100_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.6105 seconds
+Generating Gradient Flow Plot at epoch 75
+Epoch 76: train_acc_0.0096_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.5884 seconds
+Generating Gradient Flow Plot at epoch 76
+Epoch 77: train_acc_0.0100_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.5682 seconds
+Generating Gradient Flow Plot at epoch 77
+Epoch 78: train_acc_0.0097_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.5449 seconds
+Generating Gradient Flow Plot at epoch 78
+Epoch 79: train_acc_0.0101_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.5594 seconds
+Generating Gradient Flow Plot at epoch 79
+Epoch 80: train_acc_0.0099_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.5251 seconds
+Generating Gradient Flow Plot at epoch 80
+Epoch 81: train_acc_0.0099_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.5258 seconds
+Generating Gradient Flow Plot at epoch 81
+Epoch 82: train_acc_0.0097_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.5422 seconds
+Generating Gradient Flow Plot at epoch 82
+Epoch 83: train_acc_0.0102_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.5709 seconds
+Generating Gradient Flow Plot at epoch 83
+Epoch 84: train_acc_0.0097_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.5275 seconds
+Generating Gradient Flow Plot at epoch 84
+Epoch 85: train_acc_0.0096_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.6200 seconds
+Generating Gradient Flow Plot at epoch 85
+Epoch 86: train_acc_0.0096_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.6889 seconds
+Generating Gradient Flow Plot at epoch 86
+Epoch 87: train_acc_0.0097_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.6040 seconds
+Generating Gradient Flow Plot at epoch 87
+Epoch 88: train_acc_0.0100_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.5424 seconds
+Generating Gradient Flow Plot at epoch 88
+Epoch 89: train_acc_0.0095_train_loss_4.6052_val_acc_0.0064_val_loss_4.6069 epoch time 117.6184 seconds
+Generating Gradient Flow Plot at epoch 89
+Epoch 90: train_acc_0.0098_train_loss_4.6051_val_acc_0.0064_val_loss_4.6069 epoch time 117.6363 seconds
+Generating Gradient Flow Plot at epoch 90
+Epoch 91: train_acc_0.0099_train_loss_4.6051_val_acc_0.0064_val_loss_4.6069 epoch time 117.5484 seconds
+Generating Gradient Flow Plot at epoch 91
+Epoch 92: train_acc_0.0099_train_loss_4.6051_val_acc_0.0064_val_loss_4.6069 epoch time 117.5665 seconds
+Generating Gradient Flow Plot at epoch 92
+Epoch 93: train_acc_0.0099_train_loss_4.6051_val_acc_0.0064_val_loss_4.6069 epoch time 117.8734 seconds
+Generating Gradient Flow Plot at epoch 93
+Epoch 94: train_acc_0.0098_train_loss_4.6051_val_acc_0.0064_val_loss_4.6069 epoch time 117.6861 seconds
+Generating Gradient Flow Plot at epoch 94
+Epoch 95: train_acc_0.0099_train_loss_4.6051_val_acc_0.0064_val_loss_4.6069 epoch time 117.5060 seconds
+Generating Gradient Flow Plot at epoch 95
+Epoch 96: train_acc_0.0102_train_loss_4.6051_val_acc_0.0064_val_loss_4.6069 epoch time 117.6513 seconds
+Generating Gradient Flow Plot at epoch 96
+Epoch 97: train_acc_0.0100_train_loss_4.6051_val_acc_0.0064_val_loss_4.6069 epoch time 117.5595 seconds
+Generating Gradient Flow Plot at epoch 97
+Epoch 98: train_acc_0.0099_train_loss_4.6051_val_acc_0.0064_val_loss_4.6069 epoch time 117.5605 seconds
+Generating Gradient Flow Plot at epoch 98
+Epoch 99: train_acc_0.0099_train_loss_4.6051_val_acc_0.0064_val_loss_4.6069 epoch time 117.5857 seconds
+Generating Gradient Flow Plot at epoch 99
+Generating test set evaluation metrics
