@@ -144,18 +144,21 @@ class ExperimentBuilder(nn.Module):
     def plot_grad_flow(self, named_parameters):
         """
         The function is being called in Line 298 of this file. 
-        Receives the parameters of the model being trained. Returns plot of gradient flow for the given model parameters.
+        Receives the parameters of the model being trained. 
+        Returns plot of gradient flow for the given model parameters.
        
         """
         all_grads = []
         layers = []
         
         """
-        Complete the code in the block below to collect absolute mean of the gradients for each layer in all_grads with the             layer names in layers.
+        Complete the code in the block below to collect absolute mean of the 
+        gradients for each layer in all_grads with the layer names in layers.
         """
         ########################################
-        
-        
+        for name, param in named_parameters:
+            all_grads.append(abs(param.grad).mean())
+            layers.append(name)
         ########################################
             
         
