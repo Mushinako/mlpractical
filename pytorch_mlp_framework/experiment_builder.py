@@ -14,7 +14,7 @@ matplotlib.rcParams.update({'font.size': 8})
 
 class ExperimentBuilder(nn.Module):
     def __init__(self, network_model, experiment_name, num_epochs, train_data, val_data,
-                 test_data, weight_decay_coefficient, use_gpu, continue_from_epoch=-1):
+                 test_data, weight_decay_coefficient, use_gpu, continue_from_epoch=-1, lr=0.00002):
         """
         Initializes an ExperimentBuilder object. Such an object takes care of running training and evaluation of a deep net
         on a given dataset. It also takes care of saving per epoch models and automatically inferring the best val model
@@ -76,7 +76,7 @@ class ExperimentBuilder(nn.Module):
                                     weight_decay=weight_decay_coefficient)
         self.learning_rate_scheduler = optim.lr_scheduler.CosineAnnealingLR(self.optimizer,
                                                                             T_max=num_epochs,
-                                                                            eta_min=0.00002)
+                                                                            eta_min=lr)
         # Generate the directory names
         self.experiment_folder = os.path.abspath(experiment_name)
         self.experiment_logs = os.path.abspath(os.path.join(self.experiment_folder, "result_outputs"))

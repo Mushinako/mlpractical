@@ -44,6 +44,9 @@ test_data_loader = DataLoader(test_data, batch_size=args.batch_size, shuffle=Tru
 if args.block_type == 'conv_block':
     processing_block_type = ConvolutionalProcessingBlock
     dim_reduction_block_type = ConvolutionalDimensionalityReductionBlock
+elif args.block_type == 'conv_block_bn':
+    processing_block_type = ConvolutionalProcessingBlockBatchNormalised
+    dim_reduction_block_type = ConvolutionalDimensionalityReductionBlockBatchNormalised
 elif args.block_type == 'empty_block':
     processing_block_type = EmptyBlock
     dim_reduction_block_type = EmptyBlock
@@ -64,6 +67,6 @@ conv_experiment = ExperimentBuilder(network_model=custom_conv_net,
                                     use_gpu=args.use_gpu,
                                     continue_from_epoch=args.continue_from_epoch,
                                     train_data=train_data_loader, val_data=val_data_loader,
-                                    test_data=test_data_loader)  # build an experiment object
+                                    test_data=test_data_loader, lr=args.learning_rate)  # build an experiment object
 experiment_metrics, test_metrics = conv_experiment.run_experiment()  # run experiment and return experiment metrics
 
